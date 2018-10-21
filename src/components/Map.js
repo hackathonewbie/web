@@ -11,8 +11,7 @@ import Config from "../config";
 import Circle from "./Circle";
 
 const { GOOGLE_MAP_API_KEY } = Config;
-const API_ENDPOINT = '//localhost:3030/chlor_a/'
-// const API_ENDPOINT = '//ec2-54-255-197-171.ap-southeast-1.compute.amazonaws.com:3030/chlor_a/'
+const API_ENDPOINT = '/chlor_a/'
 
 const Map = compose(
   withProps({
