@@ -2,7 +2,7 @@ import React from "react";
 import { Circle } from "react-google-maps";
 
 const getColor = val => {
-  if (val < 5) return 'green';
+  if (val < 5) return 'rgb(50, 80, 190)';
   if (val < 20) return 'orange';
   return 'red';
 }

@@ -4,24 +4,41 @@ import Map from "./components/Map";
 class App extends Component {
   state = {
     dots: [],
+    hoverTarget: {},
   }
 
-  componentDidMount() {
-    window
-      .fetch('//ec2-54-255-197-171.ap-southeast-1.compute.amazonaws.com:3030/chlor_a/?lat=25.54&lon=119')
-      .then(res => res.json())
-      .then(data => {
-        const dots = data;
+  fetchData = url => window
+    .fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const dots = data;
 
-        this.setState({ dots })
-      });
+      this.setState({ dots })
+    });
+
+  updateHoverTarget = hoverTarget => {
+    this.setState({hoverTarget: {...hoverTarget}});
   }
 
   render() {
+    const { lat, lng, val } = this.state.hoverTarget;
+
     return (
       <div className="App">
-        <header className="App-header">全台藻化觀測系統</header>
-        <Map isMarkerShown dots={this.state.dots} />
+        <header className="App-header">全球藻化觀測系統</header>
+        {
+          Object.keys(this.state.hoverTarget).length > 0 ? <div className="Data-box">
+          Lat: {Math.round(lat * 100) / 100}&nbsp;&nbsp;
+          Lon: {Math.round(lng * 100) / 100}&nbsp;&nbsp;
+          Chlor: {Math.round(val * 100) / 100}
+        </div> : null
+        }
+        <Map
+          isMarkerShown
+          dots={this.state.dots}
+          fetchData={this.fetchData} 
+          updateHoverTarget={this.updateHoverTarget}
+        />
       </div>
     );
   }
