@@ -45,7 +45,7 @@ const Map = compose(
     ref={props.onMapMounted}
     defaultZoom={8}
     defaultCenter={{ lat: 25.032474, lng: 121.564714 }}
-    defaultOptions={{ mapTypeControl: false, streetViewControl: false, fullscreenControl: false }}
+    defaultOptions={{ maxZoom: 11, minZoom: 8, mapTypeControl: false, streetViewControl: false, fullscreenControl: false }}
     onBoundsChanged={props.onBoundsChanged}
   >
     {props.isMarkerShown && (
