@@ -25,7 +25,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">全球藻化觀測系統</header>
+        <header className="App-header">Global Eutrophication Observing System (G.E.O.S)</header>
         {
           Object.keys(this.state.hoverTarget).length > 0 ? <div className="Data-box">
           Lat: {Math.round(lat * 100) / 100}&nbsp;&nbsp;
